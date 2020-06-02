@@ -15,7 +15,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('profession_id')->nullable()->constrained();
+            $table->boolean('professional')->default(false);
             $table->string('name')->nullable();
+            $table->string('description')->nullable();
+            $table->integer('hourly_rate')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('cover')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();

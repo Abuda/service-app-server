@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'description', 'password', 'professional', 'profession_id', 'hourly_rate'
+        'name', 'email', 'description', 'password', 'professional', 'profession_id', 'hourly_rate', 'phone', 'address', 'address_visible', 'country_id', 'state_id', 'division_id'
     ];
 
     /**
@@ -30,6 +30,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['reviews', 'average_stars'];
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
@@ -38,4 +45,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'professional' => 'boolean'
     ];
+
+    // value accessor
+    public function getReviewsAttribute()
+    {
+        return Review::where('reviewed_id', $this->id)->get();
+    }
+
+    // value accessor
+    public function getAverageStarsAttribute()
+    {
+        return Review::where('reviewed_id', $this->id)->get()->pluck('stars')->avg();
+    }
 }

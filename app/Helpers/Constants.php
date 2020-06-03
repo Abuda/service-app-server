@@ -9,8 +9,15 @@ class Constants {
     const MIN_PASSWORD_LENGTH = 6;
     const MAX_TERM_LENGTH = 30;
     const MAX_HOURLY_RATE = 10000;
+    const MAX_REVIEW_LENGTH = 500;
 
     const MAX_RESULT_LIST = 3;
 
-    const ALLOWED_ORDER_BY = ['hourly_rate', 'name'];
+    const ALLOWED_ORDER_BY = ['hourly_rate', 'name', 'review_count'];
+
+    public static function codes() {
+        return new class {
+            const FORBIDDEN = 403;
+        };
+    }
 }

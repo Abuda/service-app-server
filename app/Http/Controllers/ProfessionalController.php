@@ -56,6 +56,13 @@ class ProfessionalController extends Controller
                     break;
                 case 'name':
                     $result = $result->orderBy('name', $validatedInput['order_direction']);
+                    break;
+                case 'review_count':
+                    $result = $result->orderBy('reviews', $validatedInput['order_direction']);
+                    break;
+                case 'average_stars':
+                    $result = $result->orderBy('average_stars', $validatedInput['order_direction']);
+                    break;
                 default:
                     break;
             }
@@ -92,9 +99,9 @@ class ProfessionalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, User $user)
     {
-        //
+        return Response()->json(['professional' => $user]);
     }
 
     /**

@@ -24,6 +24,11 @@ class CreateUsersTable extends Migration
             $table->string('cover')->nullable();
             $table->string('email')->unique();
             $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->boolean('address_visible')->default(false);
+            $table->foreignId('country_id')->nullable()->constrained();
+            $table->foreignId('state_id')->nullable()->constrained();
+            $table->foreignId('division_id')->nullable()->constrained();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -18,9 +18,16 @@ Route::post('/register', 'AuthController@register');
 Route::post('/login', 'AuthController@login');
 
 Route::get('/professionals', 'ProfessionalController@index');
+Route::get('/professionals/{user}', 'ProfessionalController@show');
 
 Route::middleware('auth:api')->group(function () {
 
     Route::put('/user', 'AuthController@update');
 
+    Route::post('/professionals/{user}/reviews', 'ReviewController@create');
+
+});
+
+Route::fallback(function () {
+    return 1;
 });

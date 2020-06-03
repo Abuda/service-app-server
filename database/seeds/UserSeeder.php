@@ -21,6 +21,9 @@ class UserSeeder extends Seeder
                 'email' => 'a@a.com',
                 'phone' => '123456789',
                 'hourly_rate' => 15,
+                'country_id' => 1,
+                'state_id' => 1,
+                'division_id' => 1,
                 'password' => bcrypt('111111')
             ],
             [
@@ -31,6 +34,9 @@ class UserSeeder extends Seeder
                 'email' => 'b@a.com',
                 'phone' => '123456789',
                 'hourly_rate' => 25,
+                'country_id' => 1,
+                'state_id' => 1,
+                'division_id' => null,
                 'password' => bcrypt('111111')
             ],
             [
@@ -41,6 +47,9 @@ class UserSeeder extends Seeder
                 'email' => 'c@a.com',
                 'phone' => '123456789',
                 'hourly_rate' => null,
+                'country_id' => null,
+                'state_id' => null,
+                'division_id' => null,
                 'password' => bcrypt('111111')
             ],
         ]);
